@@ -20,13 +20,14 @@
         android:text="Name" />
 
     <EditText
-        android:id="@+id/edtNumber"
+        android:id="@+id/edtName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="text"
         android:hint="Input your name here"/>
 
     <Button
+        android:id="@+id/btnHi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"

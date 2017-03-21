@@ -3,13 +3,20 @@ package tw.fcu.android.homeword2;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+
+    private EditText edtName;
+    private Button btnHi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +33,19 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+        findViews();
+        btnHi.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String name = edtName.getText().toString();
+                Toast.makeText(MainActivity.this, "Hello " + name, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void findViews(){
+        edtName = (EditText)findViewById(R.id.edtName);
+        btnHi = (Button)findViewById(R.id.btnHi);
     }
 
     @Override
@@ -42,11 +62,23 @@ public class MainActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
+        if (id == R.id.action_reset) {
+            edtName.setText("");
+            return true;
+        }
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
 
+        if (id == R.id.action_about) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("About this APP");
+            builder.setMessage("Author: Yu-Jun Wang");
+            builder.setPositiveButton("Ok", null);
+            builder.show();
+            return true;
+        }
         return super.onOptionsItemSelected(item);
     }
 }
