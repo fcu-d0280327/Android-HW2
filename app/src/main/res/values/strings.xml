@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">homeword2</string>
     <string name="action_settings">Settings</string>
+    <string name="action_reset">Reset</string>
+    <string name="action_about">About</string>
 </resources>
